@@ -23,7 +23,7 @@ export class LayoutComponent {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['']);
   }
 
   toggleDropdown() {

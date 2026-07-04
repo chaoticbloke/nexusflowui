@@ -9,30 +9,72 @@ import { InvoiceFormComponent } from './features/invoices/components/invoice-for
 import { CustomerFormComponent } from './features/customers/components/customer-form/customer-form';
 import { CustomerDetails } from './features/customers/components/customer-details/customer-details';
 import { InvoiceDetailsComponent } from './features/invoices/components/invoice-details/invoice-details';
+import { HomeComponent } from './features/home/home/home';
 
 export const routes: Routes = [
-  // 1. Explicit Auth routes
+  // Auth routes
   { path: 'login', component: Login },
   { path: 'register', component: Register },
 
-  // 2. Main App routes (Layout wrapped)
+  // Main application
   {
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'customers/new', component: CustomerFormComponent },
-      { path: 'customers/:customerId/edit', component: CustomerFormComponent },
-      { path: 'customers/:customerId', component: CustomerDetails },
-      { path: 'customers', component: CustomersComponent },
-      { path: 'invoices/new', component: InvoiceFormComponent },
-      { path: 'invoices/:invoiceNumber/edit', component: InvoiceFormComponent },
-      { path: 'invoices/:invoiceNumber', component: InvoiceDetailsComponent },
-      { path: 'invoices', component: InvoicesComponent },
-      // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      // Public landing page
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full',
+      },
+
+      // Dashboard
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+
+      // Customers
+      {
+        path: 'customers/new',
+        component: CustomerFormComponent,
+      },
+      {
+        path: 'customers/:customerId/edit',
+        component: CustomerFormComponent,
+      },
+      {
+        path: 'customers/:customerId',
+        component: CustomerDetails,
+      },
+      {
+        path: 'customers',
+        component: CustomersComponent,
+      },
+
+      // Invoices
+      {
+        path: 'invoices/new',
+        component: InvoiceFormComponent,
+      },
+      {
+        path: 'invoices/:invoiceNumber/edit',
+        component: InvoiceFormComponent,
+      },
+      {
+        path: 'invoices/:invoiceNumber',
+        component: InvoiceDetailsComponent,
+      },
+      {
+        path: 'invoices',
+        component: InvoicesComponent,
+      },
     ],
   },
 
-  // 3. Wildcard (Catch-all)
-  { path: '**', redirectTo: 'login' },
+  // Catch-all
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
