@@ -1,0 +1,12 @@
+.auth-link {
+  transition: all 0.2s ease-in-out;
+  border-bottom: 2px solid transparent;
+  // Use !important only if standard CSS fails
+  cursor: pointer !important;
+
+  &:hover {
+    color: var(--bs-primary);
+    border-bottom: 2px solid var(--bs-primary);
+    text-decoration: none; // Ensures no default underline conflicts
+  }
+}

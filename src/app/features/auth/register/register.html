@@ -1,0 +1,72 @@
+<div class="container mt-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <a routerLink="/" class="text-decoration-none text-muted">
+      <i class="bi bi-arrow-left me-1"></i> Back to Home
+    </a>
+    <span class="fw-bold">Nexusflow</span>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4">
+          <h3 class="card-title text-center mb-4">Create your Account</h3>
+
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input formControlName="firstName" class="form-control"
+                       [class.is-invalid]="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid">
+              </div>
+                            <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input formControlName="lastName" class="form-control"
+                       [class.is-invalid]="registerForm.get('lastName')?.touched && registerForm.get('lastName')?.invalid">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input formControlName="email" type="email" class="form-control"
+                       [class.is-invalid]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Phone Number (10 digits)</label>
+              <input formControlName="phone" type="tel" class="form-control"
+                     [class.is-invalid]="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input formControlName="password" type="password" class="form-control"
+                     [class.is-invalid]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+            </div>
+
+                        <div class="mb-3">
+              <label class="form-label">Confirm Password</label>
+              <input formControlName="confirmPassword" type="password" class="form-control"
+                     [class.is-invalid]="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading()">
+              @if (isLoading()) {
+                <span class="spinner-border spinner-border-sm me-2"></span> Creating...
+              } @else {
+                Register
+              }
+            </button>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="text-muted mb-0">
+              Already have an account?
+              <a routerLink="/login" class="text-primary fw-bold text-decoration-none auth-link">Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

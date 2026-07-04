@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'bootstrap/scss/bootstrap';
+@use 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'notyf/notyf.min.css';
+
+body {
+  background-color: #f8f9fa; // Light gray for professional contrast
+  font-family: sans-serif;
+}

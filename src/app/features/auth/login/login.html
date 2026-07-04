@@ -1,0 +1,54 @@
+<div class="container mt-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <a routerLink="/" class="text-decoration-none text-muted">
+      <i class="bi bi-arrow-left me-1"></i> Back to Home
+    </a>
+    <span class="fw-bold">Nexusflow</span>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5 col-lg-4">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4">
+          <h3 class="card-title text-center mb-4">Welcome to Nexusflow</h3>
+
+          @if (errorMessage()) {
+            <div class="alert alert-danger">{{ errorMessage() }}</div>
+          }
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input formControlName="email" type="email" class="form-control"
+                     [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+              <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input formControlName="password" type="password" class="form-control"
+                     [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading()">
+              @if (isLoading()) {
+                <span class="spinner-border spinner-border-sm me-2"></span> Loading...
+              } @else {
+                Login
+              }
+            </button>
+          </form>
+              <div class="text-center mt-4">
+                <p class="text-muted mb-0">
+                  Don't have an account?
+                  <a routerLink="/register" class="text-primary fw-bold text-decoration-none auth-link">
+                    Register here
+                  </a>
+                </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

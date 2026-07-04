@@ -1,0 +1,92 @@
+.navbar-side {
+  width: 250px;
+  min-height: 100vh;
+  transition: width 0.3s ease;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+  .nav-link {
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background-color: rgba(13, 110, 253, 0.8);
+      font-weight: 500;
+    }
+  }
+}
+
+.sidebar-collapse {
+  width: 60px;
+
+  h5 {
+    font-size: 1.2rem;
+    text-align: center;
+
+    span {
+      display: none;
+    }
+  }
+
+  .nav-link span {
+    display: none;
+  }
+
+  .nav-link {
+    text-align: center;
+    padding: 0.75rem !important;
+  }
+}
+
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+main {
+  background-color: #f8f9fa;
+}
+
+// Keep your existing .navbar-side and .sidebar-collapse styles here...
+
+// ADD THIS TO FIX THE DROPDOWN AND LAYOUT JUMPING
+.navbar-nav {
+  position: relative; // This makes the .dropdown-menu stay relative to the header
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem; // Adds a small gap between button and menu
+  min-width: 200px;   // Ensures it's wide enough for your text
+  display: none;      // Hidden by default
+
+  &.show {
+    display: block;   // Shown via Angular signal
+  }
+}
+
+// Optional: Professional fade-in animation
+.dropdown-menu {
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.2s;
+  visibility: hidden;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Clean up your Header to ensure it stays locked in place
+header {
+  height: 60px; // Fixed height prevents jumping
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}

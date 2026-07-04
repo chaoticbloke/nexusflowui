@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <h2 class="mb-4">
+    <i class="bi bi-speedometer2"></i> Dashboard
+  </h2>
+
+  <!-- Stats Grid -->
+  <div class="row mb-4">
+    <div class="col-md-6 col-lg-3 mb-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h6 class="card-title text-muted mb-2">Total Customers</h6>
+              <h2 class="text-primary mb-0">{{ totalCustomers }}</h2>
+            </div>
+            <div class="stat-icon bg-primary">
+              <i class="bi bi-people-fill"></i>
+            </div>
+          </div>
+          <small class="text-success">
+            <i class="bi bi-arrow-up"></i> 12% increase
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3 mb-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h6 class="card-title text-muted mb-2">Total Invoices</h6>
+              <h2 class="text-info mb-0">{{ totalInvoices }}</h2>
+            </div>
+            <div class="stat-icon bg-info">
+              <i class="bi bi-receipt"></i>
+            </div>
+          </div>
+          <small class="text-muted">Total created</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3 mb-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h6 class="card-title text-muted mb-2">Total Revenue</h6>
+              <h2 class="text-success mb-0">${{ totalRevenue | number : '1.0-0' }}</h2>
+            </div>
+            <div class="stat-icon bg-success">
+              <i class="bi bi-cash-coin"></i>
+            </div>
+          </div>
+          <small class="text-success">
+            <i class="bi bi-arrow-up"></i> 8% from last month
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3 mb-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h6 class="card-title text-muted mb-2">Pending</h6>
+              <h2 class="text-warning mb-0">{{ pendingInvoices }}</h2>
+            </div>
+            <div class="stat-icon bg-warning">
+              <i class="bi bi-clock"></i>
+            </div>
+          </div>
+          <small class="text-warning">Awaiting action</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Quick Actions</h5>
+        </div>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-sm-6">
+              <a routerLink="/customers" class="btn btn-outline-primary w-100">
+                <i class="bi bi-person-plus"></i> Manage Customers
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a routerLink="/invoices" class="btn btn-outline-info w-100">
+                <i class="bi bi-file-plus"></i> View Invoices
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">System Info</h5>
+        </div>
+        <div class="card-body">
+          <p class="mb-2">
+            <strong>App:</strong> <span class="badge bg-primary">NexusFlow</span>
+          </p>
+          <p class="mb-2">
+            <strong>Version:</strong> <span class="badge bg-secondary">1.0.0</span>
+          </p>
+          <p class="mb-0">
+            <strong>Status:</strong> <span class="badge bg-success">Active</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
