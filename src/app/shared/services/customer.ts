@@ -6,6 +6,7 @@ import { Customer } from '../models/customer.model';
 import { CustomerRequest } from '../models/customer-request';
 import { of } from 'rxjs';
 import { Invoice } from '../models/invoice.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ import { Invoice } from '../models/invoice.model';
 export class CustomerService {
   private readonly http = inject(HttpClient);
 
-  private readonly rootUrl = 'http://localhost:8080/api/customers';
+  private readonly rootUrl = `${environment.apiUrl}/api/customers`;
 
   getCustomers(pageNumber: number, pageSize: number) {
     const params = new HttpParams().set('page', pageNumber).set('size', pageSize);

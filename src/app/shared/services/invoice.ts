@@ -4,13 +4,14 @@ import { Injectable, inject } from '@angular/core';
 import { InvoiceRequest } from '../models/Invoice-request.model';
 import { Invoice } from '../models/invoice.model';
 import { PageResponse } from '../models/page-response.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InvoiceService {
   http = inject(HttpClient);
-  rootUrl = 'http://localhost:8080/api/invoices';
+  rootUrl = `${environment.apiUrl}/api/invoices`;
 
   createInvoice(invoiceData: InvoiceRequest, customerId: string) {
     return this.http.post<ApiResponse<Invoice>>(

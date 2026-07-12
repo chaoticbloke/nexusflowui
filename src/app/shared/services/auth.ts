@@ -6,6 +6,7 @@ import { ApiResponse } from '../models/api-response.model';
 import { LoginRequest } from '../models/login-request.model';
 import { User } from '../models/user.model';
 import { LoginResponse } from '../models/login-response.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ import { LoginResponse } from '../models/login-response.model';
 export class AuthService {
   httpClient = inject(HttpClient);
 
-  private readonly apiRootUrl = 'http://localhost:8080/api/auth/';
+  private readonly apiRootUrl = `${environment.apiUrl}/api/auth/`;
 
   private readonly TOKEN_KEY = 'authToken';
 
