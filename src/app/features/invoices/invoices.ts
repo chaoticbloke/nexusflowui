@@ -15,7 +15,6 @@ import { InvoiceService } from '../../shared/services/invoice';
 export class InvoicesComponent implements OnInit {
   invoiceService = inject(InvoiceService);
   router = inject(Router);
-  //invoices: Invoice[] = [];
   invoices = signal<Invoice[]>([]);
   currentPage = 1;
   itemsPerPage = 6;
@@ -32,7 +31,6 @@ export class InvoicesComponent implements OnInit {
   loadInvoices() {
     this.invoiceService.getInvoices().subscribe((response: any) => {
       console.log('API Response:', response);
-      //this.invoices = response.data.content;
       this.invoices.set(response.data.content);
       console.log('Fetched invoices:', this.invoices);
       this.totalPages = Math.ceil(this.invoices.length / this.itemsPerPage);
@@ -58,13 +56,13 @@ export class InvoicesComponent implements OnInit {
 
   getStatusBadgeClass(status: string): string {
     switch (status) {
-      case 'paid':
+      case 'PAID':
         return 'bg-success';
-      case 'draft':
-        return 'bg-secondary';
-      case 'sent':
+      case 'PENDING':
+        return 'bg-warning';
+      case 'SENT':
         return 'bg-info';
-      case 'overdue':
+      case 'CANCELLED':
         return 'bg-danger';
       default:
         return 'bg-warning';

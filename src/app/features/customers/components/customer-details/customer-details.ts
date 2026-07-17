@@ -100,4 +100,9 @@ export class CustomerDetails implements OnInit {
 
     this.showDeleteModal = false;
   }
+
+  createInvoice(): void {
+    const customerId = this.customer()?.customerId;
+    this.router.navigate([`/invoices/new`], { queryParams: { customerId } });
+  }
 }

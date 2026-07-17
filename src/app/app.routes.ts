@@ -10,11 +10,13 @@ import { CustomerFormComponent } from './features/customers/components/customer-
 import { CustomerDetails } from './features/customers/components/customer-details/customer-details';
 import { InvoiceDetailsComponent } from './features/invoices/components/invoice-details/invoice-details';
 import { HomeComponent } from './features/home/home/home';
+import { About } from './features/about/about';
 
 export const routes: Routes = [
   // Auth routes
   { path: 'login', component: Login },
   { path: 'register', component: Register },
+  { path: 'about', component: About },
 
   // Main application
   {
@@ -58,7 +60,7 @@ export const routes: Routes = [
         component: InvoiceFormComponent,
       },
       {
-        path: 'invoices/:invoiceNumber/edit',
+        path: 'invoices/:invoiceNumber/edit/:status',
         component: InvoiceFormComponent,
       },
       {

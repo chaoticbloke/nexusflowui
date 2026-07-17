@@ -20,6 +20,12 @@ export class InvoiceService {
     );
   }
 
+  updateInvoice(invoiceNumber: string, invoiceData: InvoiceRequest) {
+    return this.http.put<ApiResponse<Invoice>>(
+      `${this.rootUrl}/update/${invoiceNumber}`,
+      invoiceData,
+    );
+  }
   getInvoices(pageNumber: number = 0, pageSize: number = 10) {
     return this.http.get<ApiResponse<PageResponse<Invoice>>>(
       `${this.rootUrl}?page=${pageNumber}&size=${pageSize}`,
@@ -29,9 +35,14 @@ export class InvoiceService {
   getInvoice(invoiceNumber: string) {
     return this.http.get<ApiResponse<Invoice>>(`${this.rootUrl}/${invoiceNumber}`);
   }
+
   downloadInvoice(invoiceNumber: string) {
     return this.http.get(`${this.rootUrl}/${invoiceNumber}/download`, {
       responseType: 'blob',
     });
+  }
+
+  deleteInvoice(invoiceNumber: string) {
+    return this.http.delete<ApiResponse<void>>(`${this.rootUrl}/delete/${invoiceNumber}`);
   }
 }

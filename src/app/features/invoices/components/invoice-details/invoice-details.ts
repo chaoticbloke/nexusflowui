@@ -43,7 +43,12 @@ export class InvoiceDetailsComponent implements OnInit {
     });
   }
   editInvoice(): void {
-    this.router.navigate(['/invoices', this.invoice()?.invoiceNumber, 'edit']);
+    this.router.navigate([
+      '/invoices',
+      this.invoice()?.invoiceNumber,
+      'edit',
+      this.invoice()?.status,
+    ]);
   }
   downloadInvoice(): void {
     this.invoiceService.downloadInvoice(this.invoiceNumber).subscribe({
@@ -69,8 +74,14 @@ export class InvoiceDetailsComponent implements OnInit {
   }
 
   deleteInvoice(): void {
-    console.log('Delete Invoice');
-
-    this.showDeleteModal.set(false);
+    this.invoiceService.deleteInvoice(this.invoiceNumber).subscribe({
+      next: () => {
+        this.notificationService.success('Invoice deleted successfully.');
+        this.router.navigate(['/invoices']);
+      },
+      error: () => {
+        this.notificationService.error('Error deleting invoice.');
+      },
+    });
   }
 }

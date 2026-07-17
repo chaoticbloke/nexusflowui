@@ -62,7 +62,7 @@
            @for(invoice of invoices(); track invoice.invoiceNumber) {
           <tr>
             <td class="fw-bold">{{ invoice.invoiceNumber }}</td>
-            <td>{{ invoice.invoiceNumber }}</td>
+            <td>{{ invoice.customerName }}</td>
             <td class="fw-bold">${{ invoice.totalAmount | number : '1.2-2' }}</td>
             <td>{{ invoice.createdAt | date : 'short' }}</td>
             <td>{{ invoice.date | date : 'short' }}</td>
