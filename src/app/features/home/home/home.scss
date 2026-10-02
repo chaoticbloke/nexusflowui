@@ -1,0 +1,41 @@
+.ai-chat-widget {
+  z-index: 1050;
+  width: min(100%, 440px);
+}
+
+.ai-chat-window {
+  height: min(650px, calc(100dvh - 120px));
+}
+
+.ai-chat-widget-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ai-chat-widget-body app-ai-chat {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ai-chat-widget-body ::ng-deep app-ai-chat > section {
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 576px) {
+  .ai-chat-widget {
+    padding: .75rem !important;
+  }
+
+  .ai-chat-window {
+    width: calc(100vw - 1.5rem);
+    height: min(650px, calc(100dvh - 100px));
+    margin-right: -.75rem;
+  }
+}

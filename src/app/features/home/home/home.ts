@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AiChatComponent } from '../../ai/components/ai-chat/ai-chat.component';
 
@@ -8,4 +8,13 @@ import { AiChatComponent } from '../../ai/components/ai-chat/ai-chat.component';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  chatOpen = signal(false);
+  chatInitialized = signal(false);
+
+  toggleChat() {
+    const open = !this.chatOpen();
+    this.chatOpen.set(open);
+    if (open) this.chatInitialized.set(true);
+  }
+}
