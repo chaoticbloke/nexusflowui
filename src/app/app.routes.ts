@@ -11,6 +11,7 @@ import { CustomerDetails } from './features/customers/components/customer-detail
 import { InvoiceDetailsComponent } from './features/invoices/components/invoice-details/invoice-details';
 import { HomeComponent } from './features/home/home/home';
 import { About } from './features/about/about';
+import { AiChatPageComponent } from './features/ai/pages/ai-chat-page/ai-chat-page.component';
 
 export const routes: Routes = [
   // Auth routes
@@ -34,6 +35,10 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+      },
+      {
+        path: 'ai',
+        component: AiChatPageComponent,
       },
 
       // Customers

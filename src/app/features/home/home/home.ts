@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AiChatComponent } from '../../ai/components/ai-chat/ai-chat.component';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, AiChatComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

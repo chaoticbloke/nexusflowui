@@ -1,0 +1,32 @@
+<section class="d-flex flex-column w-100 mx-auto overflow-hidden rounded-4 border bg-white shadow-sm" style="max-width: 850px; height: min(660px, 74vh); min-height: 500px" aria-label="NexusFlow AI chat">
+  <header class="d-flex align-items-center gap-3 border-bottom p-3">
+    <div class="d-flex align-items-center justify-content-center rounded-3 bg-primary text-white" style="width: 2.7rem; height: 2.7rem"><i class="bi bi-stars"></i></div>
+    <div><h2 class="h6 fw-bold mb-0">NexusFlow AI</h2><p class="small text-secondary mb-0">Ask questions about your business</p></div>
+    <span class="badge rounded-pill text-bg-success ms-auto">Ready</span>
+  </header>
+
+  <div #messageList class="flex-grow-1 overflow-auto p-3" aria-live="polite" aria-relevant="additions">
+    @if (!messages().length) {
+      <div class="d-flex h-100 flex-column align-items-center justify-content-center py-4 text-center">
+        <div class="d-flex align-items-center justify-content-center rounded-4 bg-primary-subtle text-primary mb-3" style="width: 3.5rem; height: 3.5rem"><i class="bi bi-chat-heart fs-4"></i></div>
+        <h3 class="h5 fw-bold">How can I help?</h3>
+        <p class="text-secondary">Ask me about invoices, customers, or using NexusFlow.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <button class="btn btn-sm btn-outline-secondary rounded-pill" type="button" (click)="sendMessage('How do invoices work?')">How do invoices work?</button>
+          <button class="btn btn-sm btn-outline-secondary rounded-pill" type="button" (click)="sendMessage('How does authentication work?')">How does authentication work?</button>
+          <button class="btn btn-sm btn-outline-secondary rounded-pill" type="button" (click)="sendMessage('What can I do with customers?')">What can I do with customers?</button>
+        </div>
+      </div>
+    } @else {
+      <div class="d-flex flex-column gap-3">
+        @for (message of messages(); track $index) { <app-chat-message [message]="message"></app-chat-message> }
+        @if (loading()) {
+          <div class="d-flex align-items-center gap-1 rounded-3 bg-light px-3 py-2" style="width: fit-content" aria-label="NexusFlow AI is thinking"><span class="spinner-grow spinner-grow-sm text-secondary"></span><span class="spinner-grow spinner-grow-sm text-secondary"></span><span class="spinner-grow spinner-grow-sm text-secondary"></span></div>
+        }
+      </div>
+    }
+  </div>
+
+  @if (error()) { <div class="alert alert-danger rounded-0 mb-0 py-2" role="alert"><i class="bi bi-exclamation-circle me-2"></i>{{ error() }}</div> }
+  <footer class="border-top bg-white p-3"><app-chat-input [disabled]="loading()" (sendMessage)="sendMessage($event)"></app-chat-input></footer>
+</section>

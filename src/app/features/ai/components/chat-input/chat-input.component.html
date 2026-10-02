@@ -1,0 +1,8 @@
+<form class="composer" (ngSubmit)="submit()">
+  <label class="visually-hidden" for="chat-message">Ask NexusFlow anything</label>
+  <textarea id="chat-message" name="message" [(ngModel)]="message" [disabled]="disabled()" rows="1" maxlength="2000" placeholder="Ask NexusFlow anything..." (keydown.enter)="$event.preventDefault(); submit()"></textarea>
+  <button class="btn btn-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 2.5rem; height: 2.5rem" type="submit" [disabled]="disabled() || !message.trim()" aria-label="Send message">
+    @if (disabled()) { <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> } @else { <i class="bi bi-arrow-up"></i> }
+  </button>
+</form>
+<div class="text-secondary small text-center pt-2">Press Enter to send · Shift + Enter for a new line</div>
